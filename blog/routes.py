@@ -7,6 +7,8 @@ from blog import app
 def index():
    return render_template("base.html")
 
+
+
 """
 
 from flask import render_template, request
