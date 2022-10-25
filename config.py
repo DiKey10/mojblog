@@ -2,6 +2,8 @@
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))    # 1
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "change-me")
 
 class Config:
    SECRET_KEY = os.environ.get("dawdawdaw") or "remember-to-add-secret-key"    # 2

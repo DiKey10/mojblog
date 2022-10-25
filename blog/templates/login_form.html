@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+
+   <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
+
+ <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>
+  Zaloguj się
+</h3>
+
+{% if errors %}
+   {{ errors.username }}
+{% endif %}
+<form action="" method="POST">
+  {{form.hidden_tag()}}
+   <div class="form-group">
+       <label for="title">Login</label>
+       {% if errors and errors.username %}
+           {{ form.username(class_="form-control is-invalid") }}
+       {% else %}
+           {{ form.username(class_="form-control") }}
+       {% endif %}
+       <div class="invalid-feedback">{{ errors.username|join(' ') }}</div>
+
+   </div>
+   <div class="form-group">
+       <label for="body">Hasło</label>
+
+       {% if errors and errors.password %}
+           {{ form.password(class_="form-control is-invalid") }}
+       {% else %}
+           {{ form.password(class_="form-control") }}
+       {% endif %}
+       <div class="invalid-feedback">{{ errors.password|join(' ') }}</div>
+
+   </div>
+   <button type="submit" class="btn btn-primary mt-5">Zaloguj</button>
+</form>
+
+{% endblock %}
+
+</body>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+   crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+   integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+   crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+   integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+   crossorigin="anonymous"></script>
+</html>
