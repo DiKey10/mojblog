@@ -27,6 +27,35 @@ def login():
    return render_template("login_form.html", form=form, errors=errors)
 
 
+def one_function(request):
+    if entry_id == None:
+        form = EntryForm()
+        errors = None
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                entry = Entry(
+                    title=form.title.data,
+                    body=form.body.data
+                is_published = form.is_published.data
+                )
+                db.session.add(entry)
+                db.session.commit()
+            else:
+                errors = form.errors
+    else:
+    return render_template("entry_form.html", form=form, errors=errors)
+
+@app.route("/edit-post/<int:entry_id>", methods=["GET", "POST"])
+def edit_entry(entry_id):
+    return one_function(request=request,entry_id=entry_id)
+
+@app.route("/new-post/", methods=["GET", "POST"])
+def create_entry():
+    return one_function(request=request,entry_id=None)
+
+
+
+
 @app.route('/logout/', methods=['GET', 'POST'])
 def logout():
    if request.method == 'POST':
